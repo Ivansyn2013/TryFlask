@@ -2,9 +2,10 @@ from flask import Flask, render_template
 from flask import request
 from flask import g
 from time import time
+from blog.views.users import users_app
 
 app = Flask(__name__)
-
+app.register_blueprint(users_app, url_prefix='/users')
 
 @app.route('/')
 def index():  # put application's code here
