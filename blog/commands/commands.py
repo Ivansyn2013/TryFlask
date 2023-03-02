@@ -1,7 +1,9 @@
-from blog.app import app
 from blog.models.init_db import db
 from blog.models.user import User
-@app.cli.command("init-db")
+from flask import Blueprint
+
+my_cli_commands_app = Blueprint('my_commands', __name__)
+@my_cli_commands_app.cli.command("init-db")
 def init_db():
     '''
     command for init flask db
@@ -9,7 +11,7 @@ def init_db():
     db.create_all()
     print('Db is inited')
 
-@app.cli.command("create-user")
+@my_cli_commands_app.cli.command("create-user")
 def create_user():
     '''
     Cli command for create Flask user in db

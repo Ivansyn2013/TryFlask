@@ -3,9 +3,9 @@ from blog.models.init_db import db
 
 class User(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(80), unique=True, nullable=False)
+    user_name = Column(String(80), unique=True, nullable=False)
     is_staff = Column(Boolean, nullable=False, default=False)
 
     def __repr__(self):
-        return f"< User {self.id} {self.username!r}>"
+        return f"< User {self.id} {self.user_name!r}>"
 

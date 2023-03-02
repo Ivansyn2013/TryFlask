@@ -5,11 +5,14 @@ from time import time
 from blog.views.users import users_app
 from blog.config.developer import DevelopmemtConfig
 from blog.models.init_db import db
+from blog.commands.commands import my_cli_commands_app
 
 app = Flask(__name__)
 app.register_blueprint(users_app, url_prefix='/users')
-app.config.from_object(DevelopmemtConfig())
+app.register_blueprint(my_cli_commands_app)
+app.config.from_object(DevelopmemtConfig)
 db.init_app(app)
+
 
 
 @app.route('/')
