@@ -8,7 +8,7 @@ from blog.models.init_db import db
 
 app = Flask(__name__)
 app.register_blueprint(users_app, url_prefix='/users')
-app.config_class(DevelopmemtConfig())
+app.config.from_object(DevelopmemtConfig())
 db.init_app(app)
 
 
