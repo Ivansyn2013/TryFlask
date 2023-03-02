@@ -4,14 +4,18 @@
     User list
 {% endblock %}
 {% block body %}
-    <h1> User list </h1>
+    <div class="container">
+        <h1> User list </h1>
+    </div>
     <div class="container">
         <ul>
-            {% for user_id in users %}
-            <li><a href="{{ url_for('users_app.details', user_id=user_id)
+            {% for user in users %}
+            <li><a href="{{ url_for('users_app.details', user_id=user.id)
                     }}">
-                {{ users[user_id] }}
-            </a></li>
+                {{ user.user_name }}
+            </a>
+              <span class="badge bg-secondary">staff</span>
+            </li>
             {% endfor %}
         </ul>
     </div>

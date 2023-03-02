@@ -3,19 +3,37 @@ from flask import request
 from flask import g
 from time import time
 from blog.views.users import users_app
+from blog.config.developer import DevelopmemtConfig
+from blog.models.init_db import db
+from blog.commands.commands import my_cli_commands_app
+from blog.views.auth import login_manager, auth_app
 
+# create app
 app = Flask(__name__)
+###blueprints
 app.register_blueprint(users_app, url_prefix='/users')
+app.register_blueprint(my_cli_commands_app)
+app.register_blueprint(auth_app, url_prefix="/auth")
+###
+###config
+app.config.from_object(DevelopmemtConfig)
+###
+###other imports
+db.init_app(app)
+login_manager.init_app(app)
+
 
 @app.route('/')
 def index():  # put application's code here
     return render_template('index.html')
+
 
 @app.route('/user/')
 def read_user():  # put application's code here
     name = request.args.get('name')
     surname = request.args.get('surname')
     return f"Username {name or ['noname']} Usersurname {surname or ['nosurname']}"
+
 
 @app.route("/status/", methods=["GET", "POST"])
 def custom_status_code():
@@ -33,13 +51,14 @@ def custom_status_code():
     return "", 204
 
 
-
 @app.before_request
 def process_before_request():
     """
     Sets start_time to `g` object
     """
     g.start_time = time()
+
+
 @app.after_request
 def process_after_request(response):
     """
