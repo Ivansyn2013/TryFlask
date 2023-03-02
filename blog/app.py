@@ -3,9 +3,14 @@ from flask import request
 from flask import g
 from time import time
 from blog.views.users import users_app
+from configs.developer import DevelopmemtConfig
+from models.init_db import db
 
 app = Flask(__name__)
 app.register_blueprint(users_app, url_prefix='/users')
+app.config_class(DevelopmemtConfig())
+db.init_app(app)
+
 
 @app.route('/')
 def index():  # put application's code here

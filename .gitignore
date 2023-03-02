@@ -6,3 +6,4 @@ statis
 pyvenv.cfg
 .idea
 /venbv/
+/.env
