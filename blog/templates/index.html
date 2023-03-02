@@ -7,4 +7,12 @@
 {% block body %}
     {{ super() }}
     <h2>This is body of index page!</h2>
+    <h1>
+            Hello
+    {% if current_user.is_authenticated %}
+    {{ current_user.username }}
+    {% else %}
+        anon
+    {% endif %}
+    </h1>
 {% endblock %}
