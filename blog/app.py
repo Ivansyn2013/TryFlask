@@ -7,7 +7,7 @@ from blog.config.developer import DevelopmemtConfig
 from blog.models.init_db import db
 from blog.commands.commands import my_cli_commands_app
 from blog.views.auth import login_manager, auth_app
-
+from flask_migrate import Migrate
 # create app
 app = Flask(__name__)
 ###blueprints
@@ -21,7 +21,7 @@ app.config.from_object(DevelopmemtConfig)
 ###other imports
 db.init_app(app)
 login_manager.init_app(app)
-
+migrate = Migrate(app,db)
 
 @app.route('/')
 def index():  # put application's code here
