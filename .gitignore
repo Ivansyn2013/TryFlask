@@ -8,3 +8,5 @@ pyvenv.cfg
 /venbv/
 /.env
 /include/
+/test
+test.py
