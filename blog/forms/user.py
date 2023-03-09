@@ -30,6 +30,6 @@ class RegistrationForm(UserBaseForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField("username", [validators.DataRequired()])
+    first_name = StringField("first_name", [validators.DataRequired()])
     password = PasswordField("password", [validators.DataRequired()])
     submit = SubmitField("Login")

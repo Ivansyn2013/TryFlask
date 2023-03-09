@@ -27,7 +27,7 @@ login_manager.init_app(app)
 migrate = Migrate()
 migrate.init_app(app, db, compare_type=True, render_as_batch=True)
 
-@app.route('/')
+@app.route('/', endpoint='index')
 def index():  # put application's code here
     return render_template('index.html')
 

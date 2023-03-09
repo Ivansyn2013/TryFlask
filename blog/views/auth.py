@@ -34,7 +34,7 @@ def register():
             last_name=form.last_name.data,
             username=form.username.data,
             email=form.email.data,
-            is_staf=False,
+            is_staff=False,
         )
         user.password = form.password.data
         db.session.add(user)
@@ -62,10 +62,11 @@ def unauthorized():
 @auth_app.route("/login/", methods=["GET", "POST"], endpoint="login")
 def login():
     if current_user.is_authenticated:
-        return redirect("index")
+        return redirect(url_for('index'))
     form = LoginForm(request.form)
     if request.method == "POST" and form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).one_or_none()
+        user = User.query.filter_by(
+            first_name=form.first_name.data).one_or_none()
         if user is None:
             return render_template("auth/login.html", form=form,
                                    error="User name doen't exist")
@@ -74,7 +75,7 @@ def login():
                                    error="invalid user name or password")
 
         login_user(user)
-        return redirect("index")
+        return redirect(url_for('index'))
     return render_template("auth/login.html", form=form)
 
     # if request.method == "GET":

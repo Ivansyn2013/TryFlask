@@ -13,7 +13,7 @@
         {% endif %}
     <form method="POST">
       {{ form.csrf_token() }}
-      {% for field in ['username', 'password'] %}
+      {% for field in ['first_name', 'password'] %}
         {{ render_fields(form[field]) }}
       {% endfor %}
       <div>
