@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 {% for (endpoint, label) in [('users_app.list', 'Users'),
-                                             ('article_app.list', 'Articles'),
+                                             ('articles_app.list', 'Articles'),
                                              ('author_app.list', 'Authors'),
                                              ] %}
                 <a href="{{ url_for(endpoint) }}"

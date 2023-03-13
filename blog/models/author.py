@@ -14,4 +14,4 @@ class Author(db.Model):
                         onupdate=datetime.utcnow)
 
     user = relationship("User", back_populates='author')
-    article = relationship("Artilce", back_populates='author')
+    article = relationship("Article", back_populates='author')

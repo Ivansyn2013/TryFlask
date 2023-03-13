@@ -10,13 +10,15 @@ from blog.views.auth import login_manager, auth_app
 from blog.views.author import author_app
 from flask_migrate import Migrate
 from blog.security import flask_bcrypt
+from blog.views.articles import articles_app
 # create app
 app = Flask(__name__)
 ###blueprints
 app.register_blueprint(users_app, url_prefix='/users')
 app.register_blueprint(my_cli_commands_app)
 app.register_blueprint(auth_app, url_prefix="/auth")
-app.register_blueprint(author_app, url_prfix="/authors")
+app.register_blueprint(author_app, url_prefix="/authors")
+app.register_blueprint(articles_app, url_prefix="/articles")
 ###
 ###config
 app.config.from_object(DeveloperPostgresConfig)
