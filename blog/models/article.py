@@ -2,6 +2,8 @@ from blog.models.init_db import db
 from sqlalchemy import Column, String, Integer, ForeignKey, Text, DateTime, func
 from sqlalchemy.orm import relationship
 from datetime import  datetime
+from blog.models.user import User
+from blog.models.author import Author
 
 class Article(db.Model):
 

@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     email = Column(String(255), nullable=False, default="", server_default="")
     email2 = Column(String(255), nullable=False, default="", server_default="")
 
-    author = relationship("Author", uselist=False, back_populates='user')
+    author = relationship("Author", uselist=False, back_populates='user', cascade="all, delete")
 
     @property
     def password(self):
