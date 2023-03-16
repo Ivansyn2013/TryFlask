@@ -1,4 +1,6 @@
-<div>
+{% extends 'base.html' %}
+{%  block body %}
+<div class="container">
   <ul>
     {% for article in articles %}
   <li>
@@ -11,3 +13,4 @@
   <hr>
     <a href="{{ url_for('articles_app.create') }}">Create new</a>
 </div>
+{% endblock %}
