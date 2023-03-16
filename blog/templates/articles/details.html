@@ -5,9 +5,17 @@ Article {{ article.id }}: {{ article.title }}
 
 {% block body %}
   <h1>{{ article.title }}</h1>
-  <div>
+  <div class="container">
     <p>{{ article.body }}</p>
     <div>Published {{ article.dt_create }}</div>
-    <div>by {{ article.author.user.username }}</div>
+    <div>by {{ article.author.user.first_name }}</div>
   </div>
+  {% if article.tags %}
+  <div>Tags:</div>
+  <ul>
+    {% for tag in article.tags %}
+      <li>{{ tag.name }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 {% endblock %}
