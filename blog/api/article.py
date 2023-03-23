@@ -1,18 +1,18 @@
 from flask_combo_jsonapi import ResourceList, ResourceDetail
 from blog.models.init_db import db
 from blog.models.article import Article
-from blog.schemas import TagSchema
+from blog.schemas import ArticleSchema
 
 class ArticleList(ResourceList):
-    schema = TagSchema
+    schema = ArticleSchema
     data_layer = {
         'session': db.session,
-        'model': Tag,
+        'model': Article,
     }
 
-class TagDetails(ResourceDetail):
-    schema = TagSchema
+class ArticleDetails(ResourceDetail):
+    schema = ArticleSchema
     data_layer = {
         'session': db.session,
-        'model': Tag,
+        'model': Article,
     }
