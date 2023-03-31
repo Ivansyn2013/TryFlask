@@ -5,6 +5,8 @@ from blog.models.user import User
 from blog.models.author import Author
 from flask import Blueprint
 from dotenv import load_dotenv
+from sqlalchemy.exc import IntegrityError
+
 load_dotenv()
 
 my_cli_commands_app = Blueprint('my_commands', __name__)
@@ -50,3 +52,16 @@ def create_tags():
         db.session.add(tag)
         db.session.commit()
         print("created tags")
+
+@my_cli_commands_app.cli.command("drop-db")
+def drop_db():
+    '''
+    command for init flask db
+    '''
+    try:
+        db.drop_all()
+
+        db.engine.execute("DROP TABLE alembic_version")
+        print('Db is droped')
+    except IntegrityError as error:
+        print(f'Error {error}')

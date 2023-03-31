@@ -24,8 +24,8 @@ app.register_blueprint(author_app, url_prefix="/authors")
 app.register_blueprint(articles_app, url_prefix="/articles")
 ###
 ###config
-app.config.from_object(DeveloperPostgresConfig)
-#app.config.from_object(DeployConfig)
+#app.config.from_object(DeveloperPostgresConfig)
+app.config.from_object(DeployConfig)
 ###
 ###other imports
 flask_bcrypt.init_app(app)
