@@ -12,3 +12,4 @@ pyvenv.cfg
 test.py
 /instance/
 /venv
+/.env_test
