@@ -2,6 +2,7 @@ from flask import Blueprint, request, redirect, url_for, render_template, curren
 from flask_login import LoginManager, login_user, logout_user, \
     login_required, current_user
 from blog.models.user import User
+from blog.models.author import Author
 from sqlalchemy.exc import IntegrityError
 from blog.models import db
 from blog.forms.user import RegistrationForm, LoginForm
@@ -35,6 +36,7 @@ def register():
             username=form.username.data,
             email=form.email.data,
             is_staff=False,
+            author=Author()
         )
         user.password = form.password.data
         db.session.add(user)

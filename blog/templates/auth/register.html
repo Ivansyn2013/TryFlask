@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from 'macro/form_fields.html' import render_fields %}
+{% from 'macro/form_fields.html' import render_field %}
 
 {% block title %}
   Register
@@ -15,7 +15,7 @@
     {{ form.csrf_token() }}
     {% for field in ['first_name','last_name','username', 'email',
     'password', 'confirm'] %}
-      {{ render_fields(form[field]) }}
+      {{ render_field(form[field]) }}
     {% endfor %}
     <div>
       {{ form.submit(class="btn btn-primary btn-lg") }}
