@@ -1,6 +1,6 @@
 import os
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
 class Config(object):
     TESTING = False
@@ -16,7 +16,7 @@ class DevelopmemtConfig(Config):
 
 class DeployConfig(Config):
     load_dotenv()
-    config = os.environ
+    config = dotenv_values('.env')
     SQLALCHEMY_DATABASE_URI = config['SQLALCHEMY_DATABASE_URI']
     SQLALCHEMY_MODIFICATIONS = config['SQLALCHEMY_MODIFICATIONS']
     SECRET_KEY = config['SECRET_KEY']
@@ -27,7 +27,7 @@ class DeployConfig(Config):
 
 class DeveloperPostgresConfig(Config):
     load_dotenv()
-    config = os.environ
+    config = dotenv_values('.env')
     TESTING = True
     FLASK_DEBUG = True
     SQLALCHEMY_DATABASE_URI = config['SQLALCHEMY_DATABASE_URI']

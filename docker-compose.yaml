@@ -9,13 +9,13 @@ services:
     ports:
       - "8080:5001"
     depends_on:
-      - pg
-  pg:
+      - pg_blog
+  pg_blog:
     image: postgres:12
     env_file:
-    - .env
-    volumes:
-      - "${HOME}/dbs/flask-lesson/pgdata_dev:/var/lib/postgresql/data/pgdata"
+    - ".env"
+    #volumes:
+     #- "${HOME}/dbs/flask-lesson/pgdata_dev:/var/lib/postgresql/data/pgdata"
     ports:
       - "5433:5432"
 
