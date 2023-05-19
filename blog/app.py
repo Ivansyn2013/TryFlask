@@ -3,11 +3,11 @@ from flask import request
 from flask import g
 from time import time
 from blog.views.users import users_app
-from blog.config.developer import DevelopmemtConfig
+from blog.config.developer import DevelopmemtConfig, DeployConfig
 from blog.models.init_db import db
 from blog.commands.commands import my_cli_commands_app
 from blog.views.auth import login_manager, auth_app
-
+from flask_migrate import Migrate
 # create app
 app = Flask(__name__)
 ###blueprints
@@ -16,12 +16,13 @@ app.register_blueprint(my_cli_commands_app)
 app.register_blueprint(auth_app, url_prefix="/auth")
 ###
 ###config
-app.config.from_object(DevelopmemtConfig)
+#app.config.from_object(DevelopmemtConfig)
+app.config.from_object(DeployConfig)
 ###
 ###other imports
 db.init_app(app)
 login_manager.init_app(app)
-
+migrate = Migrate(app, db)
 
 @app.route('/')
 def index():  # put application's code here
