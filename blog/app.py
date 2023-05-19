@@ -11,6 +11,8 @@ from blog.views.author import author_app
 from flask_migrate import Migrate
 from blog.security import flask_bcrypt
 from blog.views.articles import articles_app
+from blog.admin import admin
+
 # create app
 app = Flask(__name__)
 ###blueprints
@@ -30,6 +32,7 @@ db.init_app(app)
 login_manager.init_app(app)
 migrate = Migrate()
 migrate.init_app(app, db, compare_type=True, render_as_batch=True)
+admin.init_app(app)
 
 @app.route('/', endpoint='index')
 def index():  # put application's code here

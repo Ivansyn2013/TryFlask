@@ -5,6 +5,7 @@ from dotenv import load_dotenv, dotenv_values
 class Config(object):
     TESTING = False
     WTF_CSRF_ENABLED = True
+    FLASK_ADMIN_SWATCH = 'cosmo'
 
 
 class DevelopmemtConfig(Config):
